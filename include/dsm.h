@@ -7,13 +7,15 @@
 /* cada entrada guarda las propiedades de una página */
 typedef struct
 {
-    int valid; /* 1 si la página está montada, 0 si no */
-    int owner; /* dueño de la página, 1 es P1 y 2 es P2 */
+    int valid;  /* 1 si la página está montada, 0 si no */
+    int owner;  /* dueño de la página, 1 es P1 y 2 es P2 */
+    int access; /* permiso sobre la página: 0 ninguno, 1 solo lectura, 2 lectura y escritura */
 } page_entry_t;
 
 /* se declaran aquí y se definen en dsm.c */
 extern page_entry_t page_table[NUM_PAGES]; /* el índice es el ID de la página */
 extern char memory[NUM_PAGES][PAGE_SIZE];  /* filas son páginas, columnas son posiciones */
+
 void init_page_table(int process_id);
 
 #endif

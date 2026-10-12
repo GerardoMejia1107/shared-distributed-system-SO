@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     printf("Soy P%d\n", process_id);
     for (int i = 0; i < NUM_PAGES; i++)
-        printf("pagina %d: valid=%d owner=%d\n", i, page_table[i].valid, page_table[i].owner);
+        printf("pagina %d: valid=%d owner=%d access=%d\n", i, page_table[i].valid, page_table[i].owner, page_table[i].access);
 
     return 0;
 }
