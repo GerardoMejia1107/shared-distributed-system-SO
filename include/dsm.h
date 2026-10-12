@@ -17,5 +17,6 @@ extern page_entry_t page_table[NUM_PAGES]; /* el índice es el ID de la página 
 extern char memory[NUM_PAGES][PAGE_SIZE];  /* filas son páginas, columnas son posiciones */
 
 void init_page_table(int process_id);
+char leer(int page, int offset);
 
 #endif

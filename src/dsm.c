@@ -24,3 +24,21 @@ void init_page_table(int process_id)
     }
 }
 
+/* lee el byte que está en la posición offset de la página page */
+char leer(int page, int offset)
+{
+    if (page_table[page].valid == 0)
+    {
+        printf("fallo de pagina: la pagina %d no esta montada\n", page);
+        return 0;
+    }
+
+    if (page_table[page].access < 1)
+    {
+        printf("sin permiso de lectura en la pagina %d\n", page);
+        return 0;
+    }
+
+    return memory[page][offset];
+}
+
