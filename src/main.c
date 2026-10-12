@@ -25,8 +25,8 @@ int main(int argc, char *argv[])
     for (int i = 0; i < NUM_PAGES; i++)
         printf("pagina %d: valid=%d owner=%d access=%d\n", i, page_table[i].valid, page_table[i].owner, page_table[i].access);
 
-    /* prueba temporal: escribo directo en memory y lo leo con leer */
-    memory[5][10] = 'A';
+    /* prueba temporal */
+    escribir(5, 10, 'A');
     printf("leer(5, 10) = %c\n", leer(5, 10));
 
     return 0;

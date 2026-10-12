@@ -42,3 +42,20 @@ char leer(int page, int offset)
     return memory[page][offset];
 }
 
+/* escribe el byte value en la posición offset de la página page */
+void escribir(int page, int offset, char value)
+{
+    if (page_table[page].valid == 0)
+    {
+        printf("fallo de pagina: la pagina %d no esta montada\n", page);
+        return;
+    }
+
+    if (page_table[page].access != 2)
+    {
+        printf("sin permiso de escritura en la pagina %d\n", page);
+        return;
+    }
+
+    memory[page][offset] = value;
+}

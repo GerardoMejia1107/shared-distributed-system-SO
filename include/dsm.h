@@ -18,5 +18,6 @@ extern char memory[NUM_PAGES][PAGE_SIZE];  /* filas son páginas, columnas son p
 
 void init_page_table(int process_id);
 char leer(int page, int offset);
+void escribir(int page, int offset, char value);
 
 #endif
