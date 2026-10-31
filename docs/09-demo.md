@@ -25,13 +25,16 @@ En pantalla: P2 manda `PEDIR_LECTURA`, P1 pasa su copia a solo lectura y manda `
 P2> escribir 5 0 Chau              (P2 solo tiene lectura)
 ```
 
-En pantalla: P2 manda `PEDIR_ESCRITURA`, P1 invalida su copia y cede la propiedad, P2 recibe la página con permiso de escritura. Con `tabla`: P1 queda con `valid=0 access=0 owner=P2` y P2 con `valid=1 access=2 owner=P2`.
+En pantalla: P2 manda `INVALIDAR` a P1, P1 borra su copia, cede la propiedad y contesta `ACK_INVALIDAR`, y P2 escribe. Con `tabla`: P1 queda con `valid=0 access=0 owner=P2` y P2 con `valid=1 access=2 owner=P2`.
 
-Para ver `INVALIDAR` y `ACK_INVALIDAR`, que lo hace el dueño cuando escribe teniendo una copia ajena:
+Si P2 escribe una página que nunca leyó, manda `PEDIR_ESCRITURA` y P1 le envía la página con permiso de escritura.
+
+Para ver el caso inverso, el dueño que escribe con una copia ajena (también usa `INVALIDAR`):
 
 ```
-P1> leer 5 0 4                     (P1 pide la página a P2, quedan las dos en solo lectura)
-P1> escribir 5 0 Ping              (P1 es la dueña ahora, invalida la copia de P2)
+P2> escribir 5 0 Chau              (P2 es dueño)
+P1> leer 5 0 4                     (quedan las dos en solo lectura, P2 sigue de dueño)
+P2> escribir 5 0 Ping              (P2 invalida la copia de P1)
 ```
 
 ## Otras pruebas
