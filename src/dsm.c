@@ -198,6 +198,7 @@ void handle_message(const message_t *msg)
     case MSG_INVALIDAR:
         e->valid = 0;
         e->access = ACCESS_NONE;
+        e->owner = 3 - my_id; /* quien invalida pasa a ser el dueño */
         memset(memory[page], 0, PAGE_SIZE);
         printf("  mi copia de la pagina %d fue invalidada\n", page);
         reply.type = MSG_ACK_INVALIDAR;
