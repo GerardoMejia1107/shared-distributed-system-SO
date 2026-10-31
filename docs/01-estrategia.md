@@ -10,7 +10,9 @@ Para simplificar, la página N es la fila N de `memory`. No hay traducción de d
 
 1. Memoria y tabla de páginas (listo)
 2. `leer` y `escribir` (listo)
-3. Sockets entre P1 y P2
-4. Mensajes para pedir y enviar páginas, todos impresos en pantalla
-5. Demo 1: P2 lee una página de P1
-6. Demo 2: P2 escribe y P1 invalida su copia
+3. Sockets entre P1 y P2 (listo)
+4. Mensajes para pedir y enviar páginas, todos impresos en pantalla (listo)
+5. Demo 1: P2 lee una página de P1 (listo)
+6. Demo 2: P2 escribe y P1 invalida su copia (listo)
+
+Los pasos del demo están en `09-demo.md`.
