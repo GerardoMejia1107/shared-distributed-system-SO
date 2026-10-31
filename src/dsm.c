@@ -89,6 +89,21 @@ static int handle_page_fault(int page, int want_write)
         return 0;
     }
 
+    if (want_write && e->valid == 1)
+    {
+        /* tengo una copia de solo lectura y el otro es el dueño: antes de escribir le mando
+           la invalidación y, cuando confirma, me quedo con la propiedad exclusiva */
+        req.type = MSG_INVALIDAR;
+        if (send_msg(&req) < 0)
+            return -1;
+        if (wait_for(MSG_ACK_INVALIDAR, page, &reply) < 0)
+            return -1;
+
+        e->owner = my_id;
+        e->access = ACCESS_WRITE;
+        return 0;
+    }
+
     /* no soy el dueño: se la pido a él */
     req.type = want_write ? MSG_PEDIR_ESCRITURA : MSG_PEDIR_LECTURA;
     if (send_msg(&req) < 0)
