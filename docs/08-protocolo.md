@@ -14,8 +14,8 @@ typedef struct {
 | `PEDIR_LECTURA` | el que no tiene la página | "dame la página para leer" | si podía escribir, pasa a solo lectura y manda `ENVIAR_PAGINA` con permiso 1 |
 | `PEDIR_ESCRITURA` | el que no es dueño | "dame la página y la propiedad exclusiva" | invalida su copia, cede la propiedad y manda `ENVIAR_PAGINA` con permiso 2 |
 | `ENVIAR_PAGINA` | el dueño | contenido de la página y el permiso | quien la pidió la instala |
-| `INVALIDAR` | el dueño que quiere escribir | "borra tu copia" | pone `valid=0`, `access=0`, borra la página y manda `ACK_INVALIDAR` |
-| `ACK_INVALIDAR` | el que invalidó | "ya la borré" | el dueño puede escribir |
+| `INVALIDAR` | el que quiere escribir y ya tiene la página | "borra tu copia" | pone `valid=0`, `access=0`, cede la propiedad a quien invalida, borra la página y manda `ACK_INVALIDAR` |
+| `ACK_INVALIDAR` | el que invalidó | "ya la borré" | quien invalidó pasa a ser dueño y puede escribir |
 
 ## Reglas que se mantienen
 
