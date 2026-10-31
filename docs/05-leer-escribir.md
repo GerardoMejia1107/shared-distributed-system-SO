@@ -21,7 +21,8 @@ Las dos funciones validan los índices y revisan la tabla antes de tocar `memory
 | Quiero | Soy dueño | Qué pasa |
 |---|---|---|
 | leer | no | mando `PEDIR_LECTURA`, recibo la página y queda en solo lectura |
-| escribir | no | mando `PEDIR_ESCRITURA`, recibo la página, `access=2` y `owner` pasa a ser yo |
+| escribir | no, sin copia | mando `PEDIR_ESCRITURA`, recibo la página, `access=2` y `owner` pasa a ser yo |
+| escribir | no, pero tengo copia de solo lectura | mando `INVALIDAR`, espero `ACK_INVALIDAR`, `access=2` y `owner` pasa a ser yo |
 | escribir | sí (con copia ajena) | mando `INVALIDAR`, espero `ACK_INVALIDAR` y `access=2` |
 
 Después del fallo, el acceso se hace como si nada hubiera pasado.
